@@ -20,8 +20,11 @@ convert -rotate 270 "./out/${f_name}" "./out/${f_name}"
 echo "Copy to backup dir"
 cp "./out/${f_name}" "./out/${bak_f_name}"
 
-echo "Copy to www dir"
-cp "./out/${f_name}" "/var/www/html/out/${f_name}"
+# echo "Copy to www dir"
+# cp "./out/${f_name}" "/var/www/html/out/${f_name}"
 
-echo "Touch www index file"
-touch "/var/www/html/index.html"
+# echo "Touch www index file"
+# touch "/var/www/html/index.html"
+
+echo "Calling animated Gif script"
+/bin/bash ./animation.sh
