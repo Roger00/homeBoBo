@@ -17,6 +17,9 @@ raspistill -o "./out/${f_name}" -w 720 -h 720 -hf -vf 2>&1
 echo "Rotating photo..."
 convert -rotate 270 "./out/${f_name}" "./out/${f_name}"
 
+echo "Adding water mark..."
+python waterMark.py "./out/${f_name}" "./out/${f_name}"
+
 echo "Copy to backup dir"
 cp "./out/${f_name}" "./out/${bak_f_name}"
 
