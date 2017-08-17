@@ -2,10 +2,11 @@ import datetime
 from gpiozero import MotionSensor
 import subprocess
 
-def takePhoto(out_file):
-	print("Take photo...save to: " + out_file)
+def takePhoto():
+	print("Take photo...")
 	# cmd = ['ls', '-l']
-	cmd = ['raspistill', '-o', out_file, '-w', '720', '-h', '720', '-hf', '-vf']
+	# cmd = ['raspistill', '-o', out_file, '-w', '720', '-h', '720', '-hf', '-vf']
+	cmd = ['/bin/bash', '/home/pi/scripts/photo.sh', 'pir']
 	runProcessNoWait(cmd)
 
 def runProcessNoWait(cmd):
@@ -19,7 +20,7 @@ while True:
     print("Wait for motion...")
     pir.wait_for_motion()
     print("You moved")
-    takePhoto('./pir_out/what.jpg')
+    takePhoto()
     print(datetime.datetime.utcnow())
     print("Wait for no motion")
     pir.wait_for_no_motion()
