@@ -101,8 +101,8 @@ def lightOn():
     p.start(getCycle(last_angle))
 
     try:
-        last_angle = key_adjust(last_angle, p)
-        sleep(2)
+        last_angle = doKey(last_angle, RIGHT, p)
+        last_angle = doKey(last_angle, RIGHT, p)
 
     except KeyboardInterrupt:
         p.stop()

@@ -18,8 +18,8 @@ echo "Output folder: ${out_folder}"
 f_name="photo.jpg"
 bak_f_name="$(timestamp).jpg"
 
-echo "Switching to correct dir"
-cd /home/pi/scripts/
+# echo "Switching to correct dir"
+# cd /home/pi/scripts/
 
 echo "Taking photo...${bak_f_name}"
 raspistill -o "${out_folder}${f_name}" -w 720 -h 720 -hf -vf 2>&1

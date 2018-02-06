@@ -1,9 +1,64 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+<script type="text/javascript">
+    document.write("\<script src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type='text/javascript'>\<\/script>");
+</script>
+</head>
+
 <body>
+<script>
+function servo(direction) {
+    console.log("[JS] Rotate: " + direction);
+
+    $.ajax({
+    type: "POST",
+    url: './php/servo.php',
+    dataType: 'json',
+    data: {functionname: 'servo_update', arguments: [direction]},
+
+    success: function (obj, textstatus) {
+                  if( !('error' in obj) ) {
+                      yourVariable = obj.result;
+                      console.log("success: " + obj.result);
+                  }
+                  else {
+                      console.log(obj.error);
+                  }
+            }
+});
+}
+
+function takePhoto() {
+    console.log("[JS] Take photo...");
+
+    $.ajax({
+    type: "POST",
+    url: './php/photo.php',
+    dataType: 'json',
+    data: {functionname: 'add', arguments: [1, 2]},
+
+    success: function (obj, textstatus) {
+                  if( !('error' in obj) ) {
+                      yourVariable = obj.result;
+                      console.log("success: " + obj.result);
+                  }
+                  else {
+                      console.log(obj.error);
+                  }
+            }
+});
+}
+</script>
 
 <h2>Spectacular Home View</h2>
+<button onclick="servo('LEFT')">Turn Left</button>
+<button onclick="takePhoto()">Take Photo</button>
+<button onclick="servo('RIGHT')">Turn Right</button>
 <img src="./out/animation.gif" alt="Mountain View" style="width:480px;height:480px;">
+
+<img src="./pir_out/photo.jpg" style="width:480px;height:480px;">
 
 <script language="Javascript">
     document.write("<br>This page was last modified on: " + document.lastModified +"");
